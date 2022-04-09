@@ -110,5 +110,4 @@ package-lock.json
 **/package-locj.json
 **/.env
 **/env
-**/config
 **/.npmrc
