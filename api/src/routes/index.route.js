@@ -15,4 +15,6 @@ fs.readdirSync(__dirname).forEach((file) => {
   }
 })
 
+router.use('/', (_, res) => res.status(200).json({ Greeting: 'Welcome C:' }))
+
 module.exports = router
