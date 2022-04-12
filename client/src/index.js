@@ -6,7 +6,7 @@ import App from './routes/App'
 import reportWebVitals from './reportWebVitals'
 import axios from 'axios'
 import { Provider } from 'react-redux'
-import store from './redux/index.store'
+import store from './redux/index.store.js'
 import dotenv from 'dotenv'
 dotenv.config()
 

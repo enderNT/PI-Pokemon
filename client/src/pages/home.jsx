@@ -1,19 +1,17 @@
 import React, { Fragment, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { getAllPokemons } from '../redux/index.actions'
+import { useDispatch } from 'react-redux'
+import { getAllPokemons } from '../redux/index.actions.js'
 
 const Home = () => {
   const dispatch = useDispatch()
-  const { pokemons } = useSelector(state => state)
   useEffect(() => {
-    dispatch(getAllPokemons)
-  }, [dispatch, pokemons])
+    dispatch(getAllPokemons())
+  }, [dispatch])
   
   return (
     <Fragment>
       <div>
         Hola
-
       </div>
     </Fragment>
   )
