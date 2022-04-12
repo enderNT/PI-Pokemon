@@ -25,7 +25,7 @@ const { PORT } = process.env
 // Syncing all the models at once.
 sequelize.authenticate().then(() => {
   console.log('***Conection to DB succesful***')// eslint-disable-line no-console
-  server.listen(PORT, () => {
+  server.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${PORT}`) // eslint-disable-line no-console
   })
 }).catch((e) => {
