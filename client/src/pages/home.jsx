@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { getAllPokemons } from '../redux/index.actions.js'
 
@@ -9,11 +9,9 @@ const Home = () => {
   }, [dispatch])
   
   return (
-    <Fragment>
       <div>
-        Hola
+        Home
       </div>
-    </Fragment>
   )
 }
 
