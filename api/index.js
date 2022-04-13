@@ -20,13 +20,11 @@
 const server = require('./src/app.js')
 const { sequelize } = require('./src/db/models/index.js')
 
-const { PORT } = process.env
-
 // Syncing all the models at once.
 sequelize.authenticate().then(() => {
   console.log('***Conection to DB succesful***')// eslint-disable-line no-console
   server.listen(process.env.PORT, () => {
-    console.log(`Server is running on port ${PORT}`) // eslint-disable-line no-console
+    console.log(`Server is running on port ${process.env.PORT}`) // eslint-disable-line no-console
   })
 }).catch((e) => {
   throw new Error (e)

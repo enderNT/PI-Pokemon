@@ -62,6 +62,7 @@ module.exports = {
     database: `${DB_NAME}`,
     host: `${DB_HOST}`,
     dialect: `${DB_DIALECT}`,
+    port = DB_PORT,
     ssl: true,
     logging: false,
     pool: {
