@@ -14,6 +14,9 @@ const NavBar = () => (
           </div>
         </Link>
       </div>
+      <div>
+        <span>Pokedex v1.0.0</span>
+      </div>
       <ul className='navBar__Right'>
         <Link to='/'>
           <li>Home</li>

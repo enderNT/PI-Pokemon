@@ -7,6 +7,7 @@ import About from '../pages/about'
 import { Fragment } from 'react'
 import NavBar from '../components/navBar'
 import DetailPokemon from '../pages/detailPokemon'
+import Results from '../pages/results'
 
 const App = () => (
   <Fragment>
@@ -17,6 +18,7 @@ const App = () => (
       <Route path='/createPokemon' element={ <CreatePokemon /> }/>
       <Route path='/about' element={ <About /> } />
       <Route path='/pokemon/:id' element={ <DetailPokemon /> } />
+      <Route path='/results' element={ <Results /> } />
     </Routes>
   </Fragment>
 )

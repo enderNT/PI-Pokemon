@@ -5,7 +5,8 @@ const initialState = {
   pokemons: [],
   pages: 0,
   order: 'idASC',
-  // pokemonsFound: [], //!Sin slice
+  filter: 'all',
+  pokemonsFound: [], //!Sin slice
   // pokemonsFiltered: [], //!Sin slice
   pokemonDetailed: {},
 }
@@ -23,18 +24,29 @@ const rootReducer = (state=initialState, { type, payload }) => {
     case '@search/pokemon':
       return {
         ...state,
-        pokemons: payload.pokemons,
+        pokemonsFound: payload.pokemons,
       }
     case '@filter/types':
       return {
         ...state,
         count: payload.count,
-        pokemons: payload.data.Pokemons,
+        pokemons: payload.data.Pokemons.slice((payload.page-1)*12, payload.page*12),
+      }
+    case '@filter/pokemons':
+      console.log(payload)
+      return {
+        ...state,
+        filter: payload
       }
     case '@getDetail/pokemons':
       return {
         ...state,
         pokemonDetailed: payload,
+      }
+    case '@order/pokemons':
+      return {
+        ...state,
+        order: payload
       }
     default:
       return state

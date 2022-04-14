@@ -1,6 +1,6 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import PokemonCard from './pokemonCard'
+import { useSelector } from 'react-redux'
 
 const ContentPage = () => {
   const { pokemons } = useSelector(state => state)
