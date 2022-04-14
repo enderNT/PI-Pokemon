@@ -1,5 +1,4 @@
 const { Op } = require('sequelize')
-
 const { Pokemons, Types } = require('../db/models/index').sequelize.models
 
 module.exports = {
