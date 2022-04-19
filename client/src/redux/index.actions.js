@@ -49,8 +49,6 @@ export const filterByTypes = (type, page=1) => {
   }
 }
 
-//!FILTRAR POR POKEMONES CREADOS
-
 export const getDetail = (id) => {
   return async (dispatch) => {
     const response = await axios.get(`/pokemons/${id}`)
@@ -59,5 +57,53 @@ export const getDetail = (id) => {
       type: '@getDetail/pokemons',
       payload,
     })
+  }
+}
+
+export const clearForm = () => {
+  return {
+    type: '@clear/form',
+    payload: {
+      name: '',
+      hp: 0,
+      attack: 0,
+      defense: 0,
+      speed: 0,
+      weight: 0,
+      height: 0,
+      image: '',
+      types: [],
+    },
+  }
+}
+
+export const handleForm = (target, value) => {
+  return {
+    type: '@handle/form',
+    payload: { target, value }
+  }
+}
+
+export const handleSubmit = (pokemonName) => {
+  return async dispatch => {
+    try {
+      const res = await axios.get(`/pokemons?name=${pokemonName}`)
+      dispatch({
+        type: '@handle/submit',
+        payload: 'Error'
+      })
+    } catch (error) {
+      dispatch({
+        type: '@handle/submit',
+        payload: 404
+      })
+    }
+  }
+}
+
+export const handleErrors = (attributeError, value) => {
+  return {
+    type: '@handle/error',
+    payload: { attributeError, value},
   }
 }

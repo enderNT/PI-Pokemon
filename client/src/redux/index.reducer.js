@@ -1,4 +1,3 @@
-
 const initialState = {
   count: 0,
   results: 0,
@@ -7,8 +6,21 @@ const initialState = {
   order: 'idASC',
   filter: 'all',
   pokemonsFound: [], //!Sin slice
-  // pokemonsFiltered: [], //!Sin slice
+  pokemon: {
+    name: '',
+    hp: 0,
+    attack: 0,
+    defense: 0,
+    speed: 0,
+    weight: 0,
+    height: 0,
+    image: '',
+    types: [],
+  },
   pokemonDetailed: {},
+  errors: {
+    name: false,
+  },
 }
 
 const rootReducer = (state=initialState, { type, payload }) => {
@@ -33,10 +45,9 @@ const rootReducer = (state=initialState, { type, payload }) => {
         pokemons: payload.data.Pokemons.slice((payload.page-1)*12, payload.page*12),
       }
     case '@filter/pokemons':
-      console.log(payload)
       return {
         ...state,
-        filter: payload
+        filter: payload,
       }
     case '@getDetail/pokemons':
       return {
@@ -46,7 +57,48 @@ const rootReducer = (state=initialState, { type, payload }) => {
     case '@order/pokemons':
       return {
         ...state,
-        order: payload
+        order: payload,
+      }
+    case '@clear/form':
+      return {
+        ...state,
+        pokemon: payload,
+      }
+    case '@handle/form':
+      const result = state.pokemon.types.includes(payload.value)
+        ? state
+        : !payload.target
+          ? { ...state,
+                pokemon: {
+                  ...state.pokemon,
+                  types: state.pokemon.types.concat(payload.value)
+                }
+            }
+          : {...state,
+                pokemon: {...state.pokemon, [payload.target]: payload.value}
+            }
+      return result
+    case '@handle/submit':
+      console.log(payload)
+      if (payload === 404) {
+        return {
+          ...state
+        }
+      } else {
+        return {
+          ...state,
+          errors: {
+            ...state.errors, name: true
+          }
+        }
+      }
+    case '@handle/error':
+      return {
+        ...state,
+        errors: {
+          ...state.errors,
+          [payload.attributeError]: payload.value
+        }
       }
     default:
       return state

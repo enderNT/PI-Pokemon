@@ -38,7 +38,6 @@ const Pokedex = () => {
             <select
               name='filter'
               onChange={(e) => dispatch(filterByTypes(e.target.value, parseInt(page)))}>
-                <option value='created'>created</option>
                 <option value='grass'>grass</option>
                 <option value='poison'>poison</option>
                 <option value='fire'>fire</option>
