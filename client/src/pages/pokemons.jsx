@@ -60,7 +60,7 @@ const Pokedex = () => {
           </div>
           <div>
             <input
-              type="text"
+              type='search'
               placeholder='metapod...'
               onChange={(e) => dispatch(searchByName(e.target.value))}
             />
@@ -76,6 +76,9 @@ const Pokedex = () => {
         </div>
         <div>
           <ContentPage />
+          {
+            
+          }
         </div>
       </div>
       <footer>

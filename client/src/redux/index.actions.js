@@ -14,7 +14,7 @@ export const getAllPokemons = (page=1, order='idASC' ) => {
 export const orderBy = (order) => {
   return {
     type: '@order/pokemons',
-    payload: order
+    payload: order,
   }
 }
 
@@ -84,18 +84,19 @@ export const handleForm = (target, value) => {
   }
 }
 
-export const handleSubmit = (pokemonName) => {
+export const handleSubmit = (pokemon) => {
   return async dispatch => {
     try {
-      const res = await axios.get(`/pokemons?name=${pokemonName}`)
+      await axios.get(`/pokemons?name=${pokemon.name}`)
       dispatch({
         type: '@handle/submit',
-        payload: 'Error'
+        payload: 'Error',
       })
     } catch (error) {
+      const res = await axios.post('/pokemons', pokemon)
       dispatch({
         type: '@handle/submit',
-        payload: 404
+        payload: { status: 404, res },
       })
     }
   }
@@ -105,5 +106,12 @@ export const handleErrors = (attributeError, value) => {
   return {
     type: '@handle/error',
     payload: { attributeError, value},
+  }
+}
+
+export const setCreated = (bool) => {
+  return {
+    type: '@set/created',
+    payload: bool,
   }
 }

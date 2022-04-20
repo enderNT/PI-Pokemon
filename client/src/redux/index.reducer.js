@@ -7,18 +7,19 @@ const initialState = {
   filter: 'all',
   pokemonsFound: [], //!Sin slice
   pokemon: {
-    name: '',
-    hp: 0,
-    attack: 0,
-    defense: 0,
-    speed: 0,
-    weight: 0,
-    height: 0,
-    image: '',
-    types: [],
+    "name": "",
+    "hp": 0,
+    "attack": 0,
+    "defense": 0,
+    "speed": 0,
+    "weight": 0,
+    "height": 0,
+    "image": "",
+    "types": [],
   },
   pokemonDetailed: {},
   errors: {
+    created: false,
     name: false,
   },
 }
@@ -79,16 +80,22 @@ const rootReducer = (state=initialState, { type, payload }) => {
             }
       return result
     case '@handle/submit':
-      console.log(payload)
-      if (payload === 404) {
+      if (payload.status === 404) {
         return {
-          ...state
+          ...state,
+          errors: {
+            ...state.errors,
+            name: false,
+            created: true,
+          }
         }
       } else {
         return {
           ...state,
           errors: {
-            ...state.errors, name: true
+            ...state.errors,
+            name: true,
+            created: false,
           }
         }
       }
@@ -98,6 +105,14 @@ const rootReducer = (state=initialState, { type, payload }) => {
         errors: {
           ...state.errors,
           [payload.attributeError]: payload.value
+        }
+      }
+    case '@set/created':
+      return {
+        ...state,
+        errors: {
+          ...state.errors,
+          created: payload,
         }
       }
     default:

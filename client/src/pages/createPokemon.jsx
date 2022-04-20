@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearForm, getAllPokemons, handleErrors, handleForm, handleSubmit } from '../redux/index.actions'
+import { clearForm, getAllPokemons, handleForm, handleSubmit, setCreated } from '../redux/index.actions'
 
 const CreatePokemon = () => {
   const dispatch = useDispatch()
@@ -28,13 +28,23 @@ const CreatePokemon = () => {
   }
 
   useEffect(() => {
+    dispatch(setCreated(false))
     dispatch(getAllPokemons())
     dispatch(clearForm())
   }, [dispatch])
 
+  useEffect(() => {
+    dispatch(clearForm())
+    dispatch(setCreated(true))
+  }, [errors.created, dispatch])
+
   return (
     <div>
       <form onSubmit={e => e.preventDefault()}>
+        {errors.created
+          ? <span>Pokemon created</span>
+          : null
+        }
         <header>CREATE YOUR OWN POKEMON</header>
         <main>
           {!errors.name
@@ -171,16 +181,21 @@ const CreatePokemon = () => {
               pokemon.types.length === 0
                 ? null
                 : pokemon.types.map((t) => (
-                  <label>
+                  <label key={idTypes[`${t}`]}>
                     { idTypes[`${t}`] }
                   </label>
                 ))
             }
           </ul>
           <div>
-            <button onClick={() => dispatch(handleSubmit(pokemon.name))}>
-              Create
-            </button>
+            {!pokemon.name || errors.name || !pokemon.hp || pokemon.hp < 0 || !pokemon.attack || pokemon.attack < 0 || !pokemon.defense || pokemon.defense < 0 || !pokemon.speed || pokemon.speed < 0 || !pokemon.weight || pokemon.weight < 0 || !pokemon.height || pokemon.height < 0 || !pokemon.image
+              ? <button disabled>
+                Create
+              </button>
+              : <button onClick={() => dispatch(handleSubmit(pokemon))}>
+                Create
+              </button>
+            }
           </div>
         </footer>
       </form>
