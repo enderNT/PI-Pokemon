@@ -1,0 +1,13 @@
+.home {
+    background-image:
+        url('https://images.pexels.com/photos/10500654/pexels-photo-10500654.jpeg?auto=compress&cs=tinysrgb&h=650&w=940');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: #EFCE5A;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+

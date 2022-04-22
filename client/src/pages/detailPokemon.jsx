@@ -2,11 +2,13 @@ import React, { useEffect, Fragment } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router'
 import { getDetail } from '../redux/index.actions'
+import '../assets/styles/pokemonDetail.css'
 
 const DetailPokemon = () => {
   const { id } = useParams()
   const { pokemonDetailed } = useSelector(state => state)
   const dispatch = useDispatch()
+
   const {
     name, hp, attack,
     defense, speed, weight, height,
@@ -18,20 +20,21 @@ const DetailPokemon = () => {
   }, [dispatch, id])
 
   return (
-    <div>
+    <div className='detail'>
       {
         pokemonDetailed.id !== parseInt(id)
           ? <strong>Who's Pokemon?...</strong>
           :
             <Fragment>
-              <h2>is {name}!!!</h2>
-              <div>
-                <header>
-                  <h2>{attack}CP</h2>
+              <h2 id='pokemonName'>Is {name}!!!</h2>
+              <div className='detailBody'>
+                <header className='detailBody__Header'>
+                  <h2>CP {attack}</h2>
                 </header>
-                <main>
-                  <div>
+                <main className='detailBody__Main'>
+                  <div className='detailBody__MainImgContainer'>
                     <img
+                      id='pokemonImage__Src'
                       src={`${image}`}
                       alt={`${name}`}
                     />
@@ -47,15 +50,18 @@ const DetailPokemon = () => {
                     <h5>Height: {height}</h5>
                   </div>
                 </main>
-                <footer>
-                  <div>
+                <footer className='detailBody__Footer'>
+                  <br />
+                  <div clasName='detailBody__FooterContainer'>
                     <h4>Types</h4>
-                    <h5>{Types[0].name}</h5>
-                    {
-                    !Types[1]
-                      ? null
-                      : <h5>{Types[1].name}</h5>
-                    }
+                    <div id='typesContainer'>
+                      <h5>{Types[0].name}</h5>
+                      {
+                      !Types[1]
+                        ? null
+                        : <h5>{Types[1].name}</h5>
+                      }
+                    </div>
                   </div>
                 </footer>
               </div>

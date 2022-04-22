@@ -7,6 +7,9 @@ import {
   filterByTypes, getAllPokemons, orderBy,
   searchByName,
 } from '../redux/index.actions'
+import '../assets/styles/pokemons.css'
+import searchIcon from '../assets/img/search.png'
+
 
 const Pokedex = () => {
   const { page } = useParams()
@@ -18,13 +21,13 @@ const Pokedex = () => {
   }, [dispatch, page, order])
 
   return (
-    <div>
-      <div>
-        <div>
-          <div>
+    <div className='pokemons'>
+        <header className='pokemonsHeader'>
+          <div className='pokemonsHeader__Options'>
             <select
-            name='order'
-            onChange={
+              id='selectOrder'
+              name='order'
+              onChange={
               (e) => dispatch(orderBy(e.target.value))}>
               <option
                 value='nameASC'>nameASC</option>
@@ -36,8 +39,9 @@ const Pokedex = () => {
                 value='attackDESC'>attackDESC</option>
             </select>
             <select
-              name='filter'
-              onChange={(e) => dispatch(filterByTypes(e.target.value, parseInt(page)))}>
+                id='selectFilter'
+                name='filter'
+                onChange={(e) => dispatch(filterByTypes(e.target.value, parseInt(page)))}>
                 <option value='grass'>grass</option>
                 <option value='poison'>poison</option>
                 <option value='fire'>fire</option>
@@ -58,37 +62,35 @@ const Pokedex = () => {
                 <option value='dark'>dark</option>
             </select>
           </div>
-          <div>
+          <div className='pokemonsHeader__Searchbar'>
             <input
+              id='inputSearch'
               type='search'
               placeholder='metapod...'
               onChange={(e) => dispatch(searchByName(e.target.value))}
             />
-            <div>
+            <div className='searchIcon__Container'>
               <Link to={`/results`}>
                 <img
-                  src='www.google.com'
+                  id='searchIcon'
+                  src={searchIcon}
                   alt='search-icon'
                 />
               </Link>
             </div>
           </div>
-        </div>
-        <div>
+        </header>
+        <main className='pokemonsMain__Contentpage'>
           <ContentPage />
-          {
-            
-          }
-        </div>
-      </div>
-      <footer>
-        <div>
+        </main>
+      <footer className='pokemonsFooter'>
+        <div className='pokemonsFooter__Pagination'>
           { Number(page) >= 2
-          && <button>
+          && <button id='buttonPrev'>
               <Link to={`/pokedex/${Number(page)-1}`}>Prev</Link>
             </button> }
           { Number(page) < pages
-          && <button>
+          && <button id='buttonNext'>
               <Link to={`/pokedex/${Number(page)+1}`}>Next</Link>
             </button> }
         </div>

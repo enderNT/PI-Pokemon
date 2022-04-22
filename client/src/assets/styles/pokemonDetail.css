@@ -1,0 +1,31 @@
+#pokemonName {
+    text-align: center;
+}
+
+.detailBody__Header {
+    text-align: center;
+}
+
+.detailBody {
+    border: 1px solid black;
+    margin: auto;
+    width: 80vw;
+    text-align: center;
+}
+
+.detailBody__MainImgContainer {
+    border: 1px solid black;
+    width: 50%;
+    margin: auto;
+}
+
+#pokemonImage__Src {
+    margin: auto;
+    width: 100%;
+}
+
+#typesContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+

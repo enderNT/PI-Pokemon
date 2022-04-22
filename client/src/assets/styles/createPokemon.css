@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap');
+
+.createPokemon {
+    width: 100vw;
+}
+
+.createPokemon__form {
+    padding-top: 5%;
+    font-family: 'Titillium Web', sans-serif;
+    width: 80vw;
+    height: 80vw;
+    margin: auto;
+}
+
+header {
+    text-align: center;
+    padding-bottom: 5%;
+}
+
+form input {
+    width: 50%;
+}
+
+.createPókemon__Footer {
+    margin-top: 10%;
+}
+
+.createPokemon__FooterSubmit input {
+    margin-top: 5%;
+    width: 13%;
+}
+
+.createPokemon__Main {
+    margin-bottom: 5%;
+}
+

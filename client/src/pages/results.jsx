@@ -2,20 +2,21 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import PokemonCard from '../components/pokemonCard'
 import { searchByName } from '../redux/index.actions'
+import '../assets/styles/results.css'
 
 const Results = () => {
   const { pokemonsFound } = useSelector(state => state)
   const dispatch = useDispatch()
   return (
-    <div>
-      <div>
+    <div className='results'>
+      <div className='results__InputSearch'>
             <input
               type="text"
               placeholder='metapod...'
               onChange={(e) => dispatch(searchByName(e.target.value))}
             />
-          </div>
-      <ul>
+      </div>
+      <ul className='results__ContentPage'>
         {
           pokemonsFound.length === 0
             ? <h2>Nothing be found</h2>
@@ -26,7 +27,7 @@ const Results = () => {
                 weight, height, image
               } = d
               return (
-                <li key={id}>
+                <li id='pokemonCard__ContainerResults' key={id}>
                   <PokemonCard 
                     id={id}
                     name={name}

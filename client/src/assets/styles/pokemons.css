@@ -1,0 +1,135 @@
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+li {
+    list-style: none;
+}
+
+.pokemons {
+    width: 100vw;
+    background: linear-gradient(to bottom, #fefcea 0%,#f1da36 5%,#f1da36 15%,#f1da36 25%);
+}
+
+/*  */
+
+.pokemonsHeader {
+    width: 100vw;
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pokemonsHeader__Options {
+    width: 40vw;
+    display: flex;
+    margin: 4%;
+}
+
+#selectOrder {
+    text-align: center;
+    height: 30%;
+    width: 25%;
+    border-radius: 8px;
+}
+
+#selectFilter {
+    text-align: center;
+    height: 30%;
+    width: 25%;
+    border-radius: 8px;
+}
+
+#inputSearch {
+    height: 30%;
+    border-radius: 8px;
+}
+
+.searchIcon__Container {
+    width: 2.4vw;
+    height: 2.2vh;
+}
+
+#searchIcon {
+    max-width: 100%;
+    max-height: 100%;
+    cursor: pointer;
+    margin: auto;
+}
+
+.pokemonsHeader__Searchbar {
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*  */
+
+.pokemonsMain__Contentpage {
+    width: 100vw;
+}
+
+.pokemonsFooter {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.pokemonsFooter__Pagination {
+    width: 25vw;
+}
+
+#buttonPrev {
+    width: 50%;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin: auto;
+}
+
+#buttonNext {
+    width: 50%;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+
+@media screen and (max-width: 550px) {
+    .pokemonsHeader {
+        height: 20%;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .pokemonsHeader__Options {
+        width: 80vw;
+        padding-top: 5%;
+        height: 40%;
+        display: flex;
+        margin: 4%;
+        justify-content: center;
+        align-items: center;
+    }
+    .pokemonsHeader__Searchbar {
+        width: 80vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .searchIcon__Container {
+        width: 5vw;
+        height: 2.5vh;
+    }
+    
+    #searchIcon {
+        max-width: 100%;
+        max-height: 100%;
+        cursor: pointer;
+        margin: auto;
+    }
+}
+

@@ -1,0 +1,19 @@
+.contentPage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#pokemonCard__Container {
+    width: 22vw;
+    height: 20vh;
+    margin-top: 8%;
+    text-align: center;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 550px) {
+    #pokemonCard__Container {
+        width: 60vw;
+    }
+}

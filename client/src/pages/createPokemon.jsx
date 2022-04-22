@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { clearForm, getAllPokemons, handleForm, handleSubmit, setCreated } from '../redux/index.actions'
+import '../assets/styles/createPokemon.css'
 
 const CreatePokemon = () => {
   const dispatch = useDispatch()
   const { pokemon, errors } = useSelector(state => state)
+  const { created } = errors
 
   const idTypes = {
     '1': 'grass',
@@ -28,132 +30,165 @@ const CreatePokemon = () => {
   }
 
   useEffect(() => {
-    dispatch(setCreated(false))
     dispatch(getAllPokemons())
     dispatch(clearForm())
   }, [dispatch])
 
-  useEffect(() => {
-    dispatch(clearForm())
-    dispatch(setCreated(true))
-  }, [errors.created, dispatch])
-
   return (
-    <div>
-      <form onSubmit={e => e.preventDefault()}>
-        {errors.created
-          ? <span>Pokemon created</span>
+    <div className='createPokemon'>
+      <form onSubmit={e => e.preventDefault()} className='createPokemon__form'>
+        {created
+          ? <span>Pokemon Created</span>
           : null
         }
         <header>CREATE YOUR OWN POKEMON</header>
-        <main>
+        <main className='createPokemon__Main'>
           {!errors.name
             ? null
             : <span>The pokemon it already exists</span>
           }
-          <label>
-            Name
-          </label> <input
-                      type='text'
-                      name='name'
-                      onChange={ (e) => dispatch(handleForm(e.target.name, e.target.value)) }
-                    />
-                    { !pokemon.name
-                        ? <label >The name its necessary</label>
-                        : null
-                    }
-          <label>
-            HP
-          </label> <input
-                      type='number'
-                      name='hp'
-                      onChange={ (e) => dispatch(handleForm(e.target.name, parseInt(e.target.value))) }
-                    />
-                    { !pokemon.hp
-                        ? <label >The hp its necessary</label>
-                        : pokemon.hp < 0
-                        ? <label>The hp must be greater than or equal 0</label>
-                        : null
-                    }
-          <label>
-            ATTACK
-          </label> <input
-                      type='number'
-                      name='attack'
-                      onChange={ (e) => dispatch(handleForm(e.target.name, parseInt(e.target.value))) }
-                    />
-                    { !pokemon.attack
-                        ? <label >The attack its necessary</label>
-                        : pokemon.attack < 0
-                        ? <label>The attack must be greater than or equal 0</label>
-                        : null
-                    }
-          <label>
-            DEFENSE
-          </label> <input
-                      type='number'
-                      name='defense'
-                      onChange={ (e) => dispatch(handleForm(e.target.name, parseInt(e.target.value))) }
-                    />
-                    { !pokemon.defense
-                        ? <label >The defense its necessary</label>
-                        : pokemon.defense < 0
-                        ? <label>The defense must be greater than or equal 0</label>
-                        : null
-                    }
-          <label>
-            SPEED
-          </label> <input
-                      type='number'
-                      name='speed'
-                      onChange={ (e) => dispatch(handleForm(e.target.name, parseInt(e.target.value))) }
-                    />
-                    { !pokemon.speed
-                        ? <label >The speed its necessary</label>
-                        : pokemon.speed < 0
-                        ? <label>The speed must be greater than or equal 0</label>
-                        : null
-                    }
-          <label>
-            WEIGHT
-          </label> <input
-                      type='number'
-                      name='weight'
-                      onChange={ (e) => dispatch(handleForm(e.target.name, parseFloat(e.target.value))) }
-                    />
-                    { !pokemon.weight
-                        ? <label >The weight its necessary</label>
-                        : pokemon.weight < 0
-                        ? <label>The weight must be greater than or equal 0</label>
-                        : null
-                    }
-          <label>
-            HEIGHT
-          </label> <input
-                      type='number'
-                      name='height'
-                      onChange={ (e) => dispatch(handleForm(e.target.name, parseInt(e.target.value))) }
-                    />
-                    { !pokemon.height
-                        ? <label >The height its necessary</label>
-                        : pokemon.height < 0
-                        ? <label>The height must be greater than or equal 0</label>
-                        : null
-                    }
-          <label>
-            IMAGE
-          </label> <input
-                      type='text'
-                      name='image'
-                      onChange={ (e) => dispatch(handleForm(e.target.name, e.target.value)) }
-                    />
-                    { !pokemon.image
-                        ? <label >The image source its necessary</label>
-                        : null
-                    }
-        </main>
-        <label>TYPES</label>
-        <div>
+          <br />
+          <div id='addName'>
+            <label>
+              Name
+            </label> <br />
+            <input
+              placeholder='Lugia...'
+              type='text'
+              name='name'
+              onChange={ (e) => dispatch(handleForm(e.target.name, e.target.value)) }
+            />
+                      { !pokemon.name
+                          ? <span>The name its necessary</span>
+                          : null
+                      }
+          </div>
+          <br />
+          <div id='addHp'>
+            <label>
+              HP
+            </label> <br />
+            <input
+              placeholder='500'
+              type='number'
+              name='hp'
+              onChange={ (e) => dispatch(handleForm(e.target.name, parseInt(e.target.value))) }
+            />
+                      { !pokemon.hp
+                          ? <span>The hp its necessary</span>
+                          : pokemon.hp < 0
+                          ? <span>The hp must be greater than or equal 0</span>
+                          : null
+                      }
+          </div>
+          <br />
+          <div id='addAttack'>
+            <label>
+              ATTACK
+            </label> <br />
+            <input
+              placeholder='120'
+              type='number'
+              name='attack'
+              onChange={ (e) => dispatch(handleForm(e.target.name, parseInt(e.target.value))) }
+            />
+                      { !pokemon.attack
+                          ? <span>The attack its necessary</span>
+                          : pokemon.attack < 0
+                          ? <span>The attack must be greater than or equal 0</span>
+                          : null
+                      }
+          </div>
+          <div id='addDefense'>
+            <br />
+            <label>
+              DEFENSE
+            </label> <br />
+            <input
+              placeholder='100'
+              type='number'
+              name='defense'
+              onChange={ (e) => dispatch(handleForm(e.target.name, parseInt(e.target.value))) }
+            />
+                      { !pokemon.defense
+                          ? <span>The defense its necessary</span>
+                          : pokemon.defense < 0
+                          ? <span>The defense must be greater than or equal 0</span>
+                          : null
+                      }
+          </div>
+          <br />
+          <div>
+            <label>
+              SPEED
+            </label> <br />
+            <input
+              placeholder='15'
+              type='number'
+              name='speed'
+              onChange={ (e) => dispatch(handleForm(e.target.name, parseInt(e.target.value))) }
+            />
+                      { !pokemon.speed
+                          ? <span>The speed its necessary</span>
+                          : pokemon.speed < 0
+                          ? <span>The speed must be greater than or equal 0</span>
+                          : null
+                      }
+          </div>
+          <br />
+          <div>
+            <label>
+              WEIGHT
+            </label> <br />
+            <input
+              placeholder='80'
+              type='number'
+              name='weight'
+              onChange={ (e) => dispatch(handleForm(e.target.name, parseFloat(e.target.value))) }
+            />
+                      { !pokemon.weight
+                          ? <span>The weight its necessary</span>
+                          : pokemon.weight < 0
+                          ? <span>The weight must be greater than or equal 0</span>
+                          : null
+                      }
+          </div>
+          <br />
+          <div>
+            <label>
+              HEIGHT
+            </label> <br />
+            <input
+              placeholder='20'
+              type='number'
+              name='height'
+              onChange={ (e) => dispatch(handleForm(e.target.name, parseInt(e.target.value))) }
+            />
+                      { !pokemon.height
+                          ? <span>The height its necessary</span>
+                          : pokemon.height < 0
+                          ? <span>The height must be greater than or equal 0</span>
+                          : null
+                      }
+          </div>
+          <br />
+          <div>
+            <label>
+              IMAGE
+            </label> <br />
+            <input
+            placeholder='www.assests.com/pokemonX'
+              type='text'
+              name='image'
+              onChange={ (e) => dispatch(handleForm(e.target.name, e.target.value)) }
+            />
+                      { !pokemon.image
+                          ? <span>The image source its necessary</span>
+                          : null
+                      }
+          </div>
+          <br />
+        <label>TYPES</label> <br />
           <select onChange={e => dispatch(handleForm(e.target.name, parseInt(e.target.value)))}>
             <option name='types' value='1'>grass</option>
             <option name='types' value='2'>poison</option>
@@ -174,27 +209,33 @@ const CreatePokemon = () => {
             <option name='types' value='17'>dragon</option>
             <option name='types' value='18'>dark</option>
           </select>
-        </div>
-        <footer>
+        </main>
+        <footer className='createPokemon__Footer'>
           <ul>
             {
               pokemon.types.length === 0
                 ? null
                 : pokemon.types.map((t) => (
+                  <Fragment>
                   <label key={idTypes[`${t}`]}>
                     { idTypes[`${t}`] }
-                  </label>
+                  </label> <br />
+                  </Fragment>
                 ))
             }
           </ul>
-          <div>
+          <div className='createPokemon__FooterSubmit'>
             {!pokemon.name || errors.name || !pokemon.hp || pokemon.hp < 0 || !pokemon.attack || pokemon.attack < 0 || !pokemon.defense || pokemon.defense < 0 || !pokemon.speed || pokemon.speed < 0 || !pokemon.weight || pokemon.weight < 0 || !pokemon.height || pokemon.height < 0 || !pokemon.image
-              ? <button disabled>
-                Create
-              </button>
-              : <button onClick={() => dispatch(handleSubmit(pokemon))}>
-                Create
-              </button>
+              ? <input
+                  type='submit'
+                  disabled
+                  value='Submit'
+                />
+              : <input
+                  value='Submit'
+                  type='submit'
+                  onClick={() => dispatch(handleSubmit(pokemon))}
+                />
             }
           </div>
         </footer>

@@ -1,12 +1,13 @@
 import React from 'react'
 import PokemonCard from './pokemonCard'
 import { useSelector } from 'react-redux'
+import '../assets/styles/contentPage.css'
 
 const ContentPage = () => {
   const { pokemons } = useSelector(state => state)
 
   return (
-    <ul>
+    <ul className='contentPage'>
       {
         pokemons.length === 0
           ? <strong>Loading...</strong>
@@ -17,7 +18,7 @@ const ContentPage = () => {
               weight, height, image
             } = d
             return (
-              <li key={id}>
+              <li id='pokemonCard__Container' key={id}>
                 <PokemonCard 
                   id={id}
                   name={name}

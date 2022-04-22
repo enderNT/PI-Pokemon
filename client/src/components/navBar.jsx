@@ -1,20 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-// import logo from '../assets/img/bulbasaurPixelArt.png'
+import logo from '../assets/img/bulbasaurPixelArt.png'
+import '../assets/styles/navBar.css'
 
 const NavBar = () => (
-    <div className='navBar'>
+    <nav className='navBar'>
       <div className='navBar__Left'>
         <Link to='/'>
-          <div>
+          <div className='navBar__LeftLogo'>
             <img
-              src='www.google.com'
+              className='logoBulbasaur'
+              src={logo}
               alt='Bulbasaur'
             />
           </div>
         </Link>
       </div>
-      <div>
+      <div className='navBar__Center'>
         <span>Pokedex v1.0.0</span>
       </div>
       <ul className='navBar__Right'>
@@ -31,7 +33,7 @@ const NavBar = () => (
           <li>About</li>
         </Link>
       </ul>
-    </div>
+    </nav>
   )
 
 export default NavBar

@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@500&display=swap');
+
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #E12A2E;
+    width: 100vw;
+    height: 8vh;
+    align-items: center;
+    font-family: 'Akshar', sans-serif;
+    color: antiquewhite;
+}
+
+/*  */
+
+.navBar__Left {
+    width: 5vh;
+    padding-left: 2%;
+}
+
+.navBar__LeftLogo {
+    width: 100%;
+}
+
+.logoBulbasaur {
+    width: 100%;
+    object-fit: contain;
+}
+
+
+/*  */
+
+.navBar__Center {
+    width: 15vh;
+    text-align: center;
+    font-size: x-large;
+}
+
+/*  */
+
+.navBar__Right {
+    width: 35vh;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    list-style: none;
+    padding-right: 5%;
+}
+
+.navBar a {
+    text-decoration: none;
+    color: white;
+}
+
+/*  */
+
+

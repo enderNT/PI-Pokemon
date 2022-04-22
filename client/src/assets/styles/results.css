@@ -1,0 +1,26 @@
+.results__ContentPage {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+    justify-content: space-evenly;
+    background: linear-gradient(to bottom, #fefcea 0%,#f1da36 5%,#f1da36 15%,#f1da36 25%);
+}
+
+#pokemonCard__ContainerResults {
+    width: 20vw;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 8%;
+}
+
+#pokemonCard__ContainerResults .pokemonCard {
+    height: 22vh;
+}
+
+#pokemonCard__ContainerResults div img {
+    /* width: 100%;
+    height: 15vh;
+    object-fit: cover; */
+    max-width: 100%;
+    height: 15vh;
+}
