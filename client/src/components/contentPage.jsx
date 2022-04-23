@@ -10,12 +10,12 @@ const ContentPage = () => {
     <ul className='contentPage'>
       {
         pokemons.length === 0
-          ? <strong>Loading...</strong>
+          ? <h3 id='contentPage__Loader'>Loading...</h3>
           : pokemons.map((d) => {
             const {
               id, name, hp,
               attack, defense, speed,
-              weight, height, image
+              weight, height, image,
             } = d
             return (
               <li id='pokemonCard__Container' key={id}>

@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearForm, getAllPokemons, handleForm, handleSubmit, setCreated } from '../redux/index.actions'
+import { clearForm, getAllPokemons, handleForm, handleSubmit } from '../redux/index.actions'
 import '../assets/styles/createPokemon.css'
 
 const CreatePokemon = () => {
@@ -36,12 +36,14 @@ const CreatePokemon = () => {
 
   return (
     <div className='createPokemon'>
+      {created
+        ? <span id='created'>Pokemon Created</span>
+        : null
+      }
       <form onSubmit={e => e.preventDefault()} className='createPokemon__form'>
-        {created
-          ? <span>Pokemon Created</span>
-          : null
-        }
-        <header>CREATE YOUR OWN POKEMON</header>
+        <header>
+          <label>Pokemon Register</label>
+        </header>
         <main className='createPokemon__Main'>
           {!errors.name
             ? null
@@ -188,6 +190,7 @@ const CreatePokemon = () => {
                       }
           </div>
           <br />
+          <br />
         <label>TYPES</label> <br />
           <select onChange={e => dispatch(handleForm(e.target.name, parseInt(e.target.value)))}>
             <option name='types' value='1'>grass</option>
@@ -211,7 +214,7 @@ const CreatePokemon = () => {
           </select>
         </main>
         <footer className='createPokemon__Footer'>
-          <ul>
+          <ul id='pokemonTypesSelected'>
             {
               pokemon.types.length === 0
                 ? null
@@ -224,8 +227,12 @@ const CreatePokemon = () => {
                 ))
             }
           </ul>
-          <div className='createPokemon__FooterSubmit'>
-            {!pokemon.name || errors.name || !pokemon.hp || pokemon.hp < 0 || !pokemon.attack || pokemon.attack < 0 || !pokemon.defense || pokemon.defense < 0 || !pokemon.speed || pokemon.speed < 0 || !pokemon.weight || pokemon.weight < 0 || !pokemon.height || pokemon.height < 0 || !pokemon.image
+          {pokemon.types.length === 0
+            ? <span id='warningTypes'>At least a type must be added</span>
+            : null
+
+          }
+            {!pokemon.name || errors.name || !pokemon.hp || pokemon.hp < 0 || !pokemon.attack || pokemon.attack < 0 || !pokemon.defense || pokemon.defense < 0 || !pokemon.speed || pokemon.speed < 0 || !pokemon.weight || pokemon.weight < 0 || !pokemon.height || pokemon.height < 0 || !pokemon.image || pokemon.types.length === 0
               ? <input
                   type='submit'
                   disabled
@@ -237,7 +244,6 @@ const CreatePokemon = () => {
                   onClick={() => dispatch(handleSubmit(pokemon))}
                 />
             }
-          </div>
         </footer>
       </form>
     </div>

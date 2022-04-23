@@ -1,13 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@500&display=swap');
+
 .home {
     background-image:
-        url('https://images.pexels.com/photos/10500654/pexels-photo-10500654.jpeg?auto=compress&cs=tinysrgb&h=650&w=940');
+        url('https://images.pexels.com/photos/1716861/pexels-photo-1716861.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
     background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    background-color: #EFCE5A;
-    width: 100vw;
+    background-size: cover;
     height: 100vh;
 }
 
+/* #homeTitle {
+    font-weight: 800;
+    font-size: xx-large;
+    padding-top: 18%;
+    margin-top: -0.5rem;
+    text-align: center;
+    font-family: 'Akshar', sans-serif;
+} */
 
 

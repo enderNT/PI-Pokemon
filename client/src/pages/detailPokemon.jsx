@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router'
 import { getDetail } from '../redux/index.actions'
 import '../assets/styles/pokemonDetail.css'
+import { typesImages, typesColors } from '../assets/img/pokemonTypes/index.js'
 
 const DetailPokemon = () => {
   const { id } = useParams()
@@ -23,43 +24,56 @@ const DetailPokemon = () => {
     <div className='detail'>
       {
         pokemonDetailed.id !== parseInt(id)
-          ? <strong>Who's Pokemon?...</strong>
+          ? <div className='detailLoader'><h3 id='whosPokemon'>Who's Pokemon?...</h3></div>
           :
             <Fragment>
-              <h2 id='pokemonName'>Is {name}!!!</h2>
-              <div className='detailBody'>
+              <h2 id='pokemonNameTitle'>Is {name}!!!</h2>
+              <div className='detailBody'
+                style={{ 'backgroundColor': `${typesColors[`${Types[0].name}`]}` }}>
                 <header className='detailBody__Header'>
-                  <h2>CP {attack}</h2>
-                </header>
-                <main className='detailBody__Main'>
-                  <div className='detailBody__MainImgContainer'>
+                  <h2 id='pokemonAttack'>CP {attack}</h2>
+                  <div className='detailBody__HeaderImgContainer'>
                     <img
                       id='pokemonImage__Src'
                       src={`${image}`}
                       alt={`${name}`}
                     />
                   </div>
-                  <strong>{name}</strong>
-                  <div>
-                    <h5>HP: {hp}</h5>
-                    <h5>Defense: {defense}</h5>
-                    <h5>Speed: {speed}</h5>
-                  </div>
-                  <div>
-                    <h5>Weight: {weight}</h5>
-                    <h5>Height: {height}</h5>
+                </header>
+                <main className='detailBody__Main'>
+                  <h3 id='pokemonName'>{name}</h3>
+                  <h6 id='pokemonHp'>HP: {hp}</h6>
+                  <div className='detailBody__MainA'>
+                    <div className='detailBody__MainA1'>
+                      <h5>Weight: {weight}Kg</h5>
+                      <h5>Height: {height}m</h5>
+                    </div>
+                    <div className='detailBody__MainA2'>
+                      <h5>Defense: {defense}</h5>
+                      <h5>Speed: {speed}</h5>
+                    </div>
                   </div>
                 </main>
                 <footer className='detailBody__Footer'>
-                  <br />
-                  <div clasName='detailBody__FooterContainer'>
-                    <h4>Types</h4>
+                  <div className='detailBody__FooterContainer'>
                     <div id='typesContainer'>
-                      <h5>{Types[0].name}</h5>
+                      <div id='type1'>
+                          <img
+                            src={typesImages[`${Types[0].name}`]}
+                            alt={Types[0].name}
+                          />
+                        <h5>{Types[0].name}</h5>
+                      </div>
                       {
                       !Types[1]
                         ? null
-                        : <h5>{Types[1].name}</h5>
+                        : <div id='type2'>
+                          <img
+                            src={typesImages[`${Types[1].name}`]}
+                            alt={Types[1].name}
+                          />
+                          <h5>{Types[1].name}</h5>
+                        </div>
                       }
                     </div>
                   </div>

@@ -29,9 +29,6 @@ const NavBar = () => (
         <Link to='/createPokemon'>
           <li>Create a pokemon</li>
         </Link>
-        <Link to='/about'>
-          <li>About</li>
-        </Link>
       </ul>
     </nav>
   )

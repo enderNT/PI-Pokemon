@@ -1,22 +1,51 @@
-#pokemonName {
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+
+.detail {
+    background: linear-gradient(to bottom, #fefcea 0%,#f1da36 5%,#f1da36 15%,#f1da36 25%);
+    padding-bottom: 15%;
+    font-family: 'Kanit', sans-serif;
+}
+
+.detailLoader {
+    width: 100vw;
+    height: 100vh;
+    font-size: xx-large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#pokemonNameTitle {
+    padding-top: 5%;
+    padding-bottom: 5%;
     text-align: center;
+    margin-top: -1%;
 }
 
 .detailBody__Header {
+    margin-top: -2%;
+    border-radius: 5px;
     text-align: center;
+    margin-bottom: -8%;
+    color: white;
+}
+
+#pokemonAttack {
+    padding-top: 5%;
 }
 
 .detailBody {
-    border: 1px solid black;
+    border-radius: 5px;
     margin: auto;
     width: 80vw;
     text-align: center;
+    background-color: rgb(33, 189, 33);
 }
 
-.detailBody__MainImgContainer {
-    border: 1px solid black;
+.detailBody__HeaderImgContainer {
     width: 50%;
     margin: auto;
+    padding: 0;
 }
 
 #pokemonImage__Src {
@@ -24,8 +53,63 @@
     width: 100%;
 }
 
+#pokemonName {
+    font-size: xx-large;
+    padding-top: 5%;
+}
+
+#pokemonHp {
+    margin-top: -2%;
+    font-size: x-small;
+}
+
+.detailBody__Main {
+    border-radius: 5px;
+    background-color: white;
+    padding-bottom: 5%;
+    color: rgb(61, 58, 58);
+    padding-left: 1%;
+}
+
+.detailBody__MainA {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.detailBody__MainA1 {
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border-right: 1px solid gray;
+}
+
+.detailBody__MainA2 {
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border-left: 1px solid gray;
+}
+
+.detailBody__Footer {
+    border-radius: 5px;
+    padding-bottom: 5%;
+    background-color: white;
+}
+
+.detailBody__FooterContainer {
+    margin: auto;
+    width: 50%;
+}
+
 #typesContainer {
+    padding-top: 5%;
+    border-top: 1px solid gray;
+    width: 100%;
+    margin: auto;
     display: flex;
     justify-content: space-evenly;
 }
-

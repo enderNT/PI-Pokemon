@@ -10,7 +10,6 @@ import {
 import '../assets/styles/pokemons.css'
 import searchIcon from '../assets/img/search.png'
 
-
 const Pokedex = () => {
   const { page } = useParams()
   const { pages, order } = useSelector(state => state)

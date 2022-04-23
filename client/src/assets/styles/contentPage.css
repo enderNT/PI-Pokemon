@@ -4,6 +4,15 @@
     justify-content: space-around;
 }
 
+#contentPage__Loader {
+    width: 100vw;
+    height: 100vh;
+    font-size: xx-large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #pokemonCard__Container {
     width: 22vw;
     height: 20vh;
