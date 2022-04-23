@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import '../assets/styles/pokemonCard.css'
+import pokeball from '../assets/img/pokeball.svg'
 
 const PokemonCard = ({ id, name, attack, image }) => {
   return (
@@ -11,7 +12,7 @@ const PokemonCard = ({ id, name, attack, image }) => {
           ? <div className='pokemonCard__ImageContainer'>
             <img
                 id='pokemonImage'
-                src='https://images.pexels.com/photos/10500651/pexels-photo-10500651.jpeg?auto=compress&cs=tinysrgb&h=650&w=940'
+                src={pokeball}
                 alt={`${name}`}
               />
           </div>

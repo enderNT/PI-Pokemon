@@ -33,6 +33,7 @@ const rootReducer = (state=initialState, { type, payload }) => {
         pokemons: payload.pokemons,
         count: payload.count,
         results: payload.results,
+        filter: 'all',
       }
     case '@search/pokemon':
       return {
@@ -43,7 +44,8 @@ const rootReducer = (state=initialState, { type, payload }) => {
       return {
         ...state,
         count: payload.count,
-        pokemons: payload.data.Pokemons.slice((payload.page-1)*12, payload.page*12),
+        pokemons: payload.data.Pokemons,
+        filter: payload.filter
       }
     case '@filter/pokemons':
       return {
@@ -54,16 +56,19 @@ const rootReducer = (state=initialState, { type, payload }) => {
       return {
         ...state,
         pokemonDetailed: payload,
+        filter: 'all'
       }
     case '@order/pokemons':
       return {
         ...state,
         order: payload,
+        filter: 'all'
       }
     case '@clear/form':
       return {
         ...state,
         pokemon: payload,
+        filter: 'all'
       }
     case '@handle/form':
       const result = state.pokemon.types.includes(payload.value)

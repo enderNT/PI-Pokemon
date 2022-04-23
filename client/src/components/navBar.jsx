@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../assets/img/bulbasaurPixelArt.png'
+import pokeball from '../assets/img/pokeball.svg'
 import '../assets/styles/navBar.css'
 
 const NavBar = () => (
@@ -10,7 +10,7 @@ const NavBar = () => (
           <div className='navBar__LeftLogo'>
             <img
               className='logoBulbasaur'
-              src={logo}
+              src={pokeball}
               alt='Bulbasaur'
             />
           </div>

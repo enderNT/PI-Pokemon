@@ -12,7 +12,7 @@ import searchIcon from '../assets/img/search.png'
 
 const Pokedex = () => {
   const { page } = useParams()
-  const { pages, order } = useSelector(state => state)
+  const { pages, order, filter } = useSelector(state => state)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -40,7 +40,9 @@ const Pokedex = () => {
             <select
                 id='selectFilter'
                 name='filter'
-                onChange={(e) => dispatch(filterByTypes(e.target.value, parseInt(page)))}>
+                onChange={(e) => dispatch(filterByTypes(e.target.value))}
+                // onChange={(e) => dispatch(filterByTypes(e.target.value, parseInt(page)))}
+                >
                 <option value='grass'>grass</option>
                 <option value='poison'>poison</option>
                 <option value='fire'>fire</option>
@@ -85,13 +87,17 @@ const Pokedex = () => {
       <footer className='pokemonsFooter'>
         <div className='pokemonsFooter__Pagination'>
           { Number(page) >= 2
-          && <button id='buttonPrev'>
+          ? <button id='buttonPrev'>
               <Link to={`/pokedex/${Number(page)-1}`}>Prev</Link>
-            </button> }
-          { Number(page) < pages
-          && <button id='buttonNext'>
+            </button>
+          : null
+          }
+          { Number(page) < pages && filter === 'all'
+          ? <button id='buttonNext'>
               <Link to={`/pokedex/${Number(page)+1}`}>Next</Link>
-            </button> }
+            </button>
+          : null
+          }
         </div>
       </footer>
     </div>
