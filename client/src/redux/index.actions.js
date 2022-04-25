@@ -36,18 +36,6 @@ export const searchByName = (name) => {
   }
 }
 
-// export const filterByTypes = (type, page=1) => {
-//   return async (dispatch) => {
-//     const response = await axios.get(`/types?filter=${type}`)
-//     const payload = response.data
-//     const { count, pokemons } = payload
-//     const [data] = pokemons
-//     dispatch({
-//       type: '@filter/types',
-//       payload: {count, data, page}
-//     })
-//   }
-// }
 export const filterByTypes = (type) => {
   return async (dispatch) => {
     const response = await axios.get(`/types?filter=${type}`)
